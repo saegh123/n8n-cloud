@@ -1,30 +1,23 @@
-app = "fly-n8n"
+services:
+  - type: web
+    name: n8n-cloud
+    env: docker
 
-[build]
-  dockerfile = "Dockerfile"
+    disk:
+      name: n8n_data
+      mount_path: /root/.n8n
+      size_gb: 1
 
-[env]
-  N8N_BASIC_AUTH_ACTIVE = "true"
-  N8N_BASIC_AUTH_USER = "saegh123"
-  N8N_BASIC_AUTH_PASSWORD = "Sepehr@2025!"
-  WEBHOOK_URL = "https://fly-n8n.fly.dev/"
-  N8N_HOST = "fly-n8n.fly.dev"
-  N8N_PROTOCOL = "https"
-  DB_SQLITE_VACUUM_ON_STARTUP = "true"
-
-[[services]]
-  internal_port = 5678
-  processes = ["app"]
-  protocol = "tcp"
-
-  [[services.ports]]
-    handlers = ["http"]
-    port = 80
-  [[services.ports]]
-    handlers = ["tls", "http"]
-    port = 443
-
-  [[services.tcp_checks]]
-    interval = "15s"
-    timeout = "2s"
-    grace_period = "30s"
+    plan: free
+    
+    envVars:
+      - key: N8N_BASIC_AUTH_ACTIVE
+        value: true
+      - key: N8N_BASIC_AUTH_USER
+        value: admin
+      - key: N8N_BASIC_AUTH_PASSWORD
+        value: yourStrongPasswordHere
+      - key: N8N_HOST
+        value: n8n-cloud-y3rf.onrender.com
+      - key: WEBHOOK_URL
+        value: https://n8n-cloud-y3rf.onrender.com/
