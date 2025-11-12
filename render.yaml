@@ -1,0 +1,23 @@
+services:
+  - type: web
+    name: n8n-saegh123
+    env: docker
+    plan: free
+    autoDeploy: false
+    disk:
+      name: n8n-data
+      mountPath: /home/node/.n8n
+      sizeGB: 1
+    envVars:
+      - key: WEBHOOK_URL
+        value: https://n8n-saegh123.onrender.com/
+      - key: N8N_HOST
+        value: n8n-saegh123.onrender.com
+      - key: N8N_BASIC_AUTH_USER
+        value: saegh123
+      - key: N8N_BASIC_AUTH_PASSWORD
+        value: Sepehr@2025!
+      - key: N8N_PROTOCOL
+        value: https
+      - key: N8N_PORT
+        value: 5678
