@@ -1,12 +1,16 @@
-FROM n8nio/n8n
+FROM n8nio/n8n:latest
 
-ENV N8N_BASIC_AUTH_ACTIVE=true
-ENV N8N_BASIC_AUTH_USER=saegh123
-ENV N8N_BASIC_AUTH_PASSWORD=Sepehr@2025!
-ENV N8N_HOST=fly-n8n
-ENV WEBHOOK_URL=https://fly-n8n.fly.dev/
+# Set environment variables
 ENV N8N_PORT=5678
-ENV DB_SQLITE_VACUUM_ON_STARTUP=true
+ENV N8N_BASIC_AUTH_ACTIVE=true
+ENV N8N_BASIC_AUTH_USER=admin
+ENV N8N_BASIC_AUTH_PASSWORD=yourStrongPasswordHere
 
+ENV N8N_HOST=n8n-cloud-y3rf.onrender.com
+ENV WEBHOOK_URL=https://n8n-cloud-y3rf.onrender.com/
+
+# Expose n8n port
 EXPOSE 5678
-CMD ["n8n", "start"]
+
+# Start n8n
+CMD ["n8n"]
